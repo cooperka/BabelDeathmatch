@@ -12,9 +12,9 @@ Deathmatch is the first game I ever wrote. I came up with it freshman year of hi
 
 ## Architecture
 
-This UML diagram is super rough, and will definitely change as I write the first implementation here.
+The game currently uses a [Model-View-Presenter](http://www.infragistics.com/community/blogs/todd_snyder/archive/2007/10/17/mvc-or-mvp-pattern-whats-the-difference.aspx) (MVP) architecture to cleanly separate responsibilities and allow for easier testing.
 
-![Current UML diagram for Babel Deathmatch](/docs/dm-uml-0.png "Current UML diagram for Babel Deathmatch")
+![Current UML diagram for Babel Deathmatch](/docs/dm-uml.png "Current UML diagram for Babel Deathmatch")
 
 ## Contributing
 
