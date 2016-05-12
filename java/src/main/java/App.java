@@ -1,5 +1,3 @@
-package com.cooperka;
-
 /**
  * Hello world!
  */

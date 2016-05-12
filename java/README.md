@@ -3,5 +3,5 @@
 ## Usage
 
 ```shell
-mvn exec:java
+./gradlew run
 ```

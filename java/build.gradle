@@ -1,0 +1,15 @@
+group 'com.cooperka.deathmatch'
+version '1.0.0'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'App'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+}
