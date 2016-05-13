@@ -3,5 +3,6 @@
 ## Usage
 
 ```shell
-./gradlew run
+alias gradle='./gradlew'
+gradle run
 ```
