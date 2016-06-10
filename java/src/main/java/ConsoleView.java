@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 /**
  * View that displays things to the console.
  */
@@ -12,14 +14,44 @@ class ConsoleView implements View {
 
     @Override
     public void showWelcome() {
-        System.out.println("Welcome to Deathmatch!");
+        println("Welcome to Deathmatch!");
         mDelegate.onContinueToSetup();
     }
 
     @Override
     public void showSetupForNumPlayers(int numPlayers) {
         for (int i = 0; i < numPlayers; i++) {
-            System.out.println("Player " + (i + 1) + ", enter your username: ");
+            String username = getStringGivenPrompt("Player " + (i + 1) + ", enter your username: ");
+            log("Name: " + username);
+
+            mDelegate.onAddPlayerWithUsername(username);
+        }
+    }
+
+    // --- Helpers
+
+    private static void println(String output) {
+        System.out.println(output);
+    }
+
+    private static void log(String output) {
+        println(output);
+    }
+
+    private static String getStringGivenPrompt(String prompt) {
+        System.out.println(prompt);
+
+        // TODO: Use more robust way of reading input
+        try {
+            byte[] bytes = new byte[1];
+            int bytesRead = System.in.read(bytes);
+            if (bytesRead <= 0) {
+                return null;
+            }
+            return String.valueOf(bytes[0]);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

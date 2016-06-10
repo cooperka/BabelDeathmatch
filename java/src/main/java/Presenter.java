@@ -31,4 +31,9 @@ class Presenter implements PresenterDelegate {
         showSetup();
     }
 
+    @Override
+    public void onAddPlayerWithUsername(String username) {
+        mGame.addPlayerWithUsername(username);
+    }
+
 }

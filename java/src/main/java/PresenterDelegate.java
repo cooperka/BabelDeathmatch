@@ -4,5 +4,6 @@
 interface PresenterDelegate {
 
     void onContinueToSetup();
+    void onAddPlayerWithUsername(String username);
 
 }
