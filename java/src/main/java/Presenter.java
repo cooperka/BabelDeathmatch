@@ -4,8 +4,6 @@
  */
 class Presenter implements PresenterDelegate {
 
-    private static final int NUM_PLAYERS = 2;
-
     private View mView;
     private Game mGame;
 
@@ -20,22 +18,31 @@ class Presenter implements PresenterDelegate {
         mView.showWelcome();
     }
 
-    private void showSetup() {
-        for (int i = 0; i < NUM_PLAYERS; i++) {
+    private void setupPlayers() {
+        for (int i = 0; i < Game.NUM_PLAYERS; i++) {
             mView.showSetupForPlayerNumber(i + 1);
         }
+    }
+
+    private void beginGame() {
+        mView.setPlayerNames(mGame.getPlayerNames());
+        mView.showGameBegin();
     }
 
     // --- PresenterDelegate
 
     @Override
     public void onContinueToSetup() {
-        showSetup();
+        setupPlayers();
     }
 
     @Override
     public void onAddPlayerWithUsername(String username) {
         mGame.addPlayerWithUsername(username);
+
+        if (mGame.getNumPlayers() == Game.NUM_PLAYERS) {
+            beginGame();
+        }
     }
 
 }

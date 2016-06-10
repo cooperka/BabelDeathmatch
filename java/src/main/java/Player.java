@@ -10,4 +10,8 @@ class Player {
         mUsername = username;
     }
 
+    public String getUsername() {
+        return mUsername;
+    }
+
 }

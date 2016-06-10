@@ -7,10 +7,26 @@ import java.util.List;
  */
 class Game {
 
-    private List<Player> players = new ArrayList<>();
+    public static final int NUM_PLAYERS = 2;
+
+    private List<Player> mPlayers = new ArrayList<>();
 
     public void addPlayerWithUsername(String username) {
-        players.add(new Player(username));
+        mPlayers.add(new Player(username));
+    }
+
+    public List<String> getPlayerNames() {
+        List<String> playerNames = new ArrayList<>(mPlayers.size());
+
+        for (Player player : mPlayers) {
+            playerNames.add(player.getUsername());
+        }
+
+        return playerNames;
+    }
+
+    public int getNumPlayers() {
+        return mPlayers.size();
     }
 
 }

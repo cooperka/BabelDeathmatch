@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * View that displays things to the console.
@@ -6,6 +8,8 @@ import java.io.IOException;
 class ConsoleView implements View {
 
     private PresenterDelegate mDelegate;
+
+    private List<String> mPlayerNames;
 
     @Override
     public void setDelegate(PresenterDelegate delegate) {
@@ -15,6 +19,7 @@ class ConsoleView implements View {
     @Override
     public void showWelcome() {
         println("Welcome to Deathmatch!");
+        println();
         mDelegate.onContinueToSetup();
     }
 
@@ -26,7 +31,23 @@ class ConsoleView implements View {
         mDelegate.onAddPlayerWithUsername(username);
     }
 
+    @Override
+    public void setPlayerNames(List<String> playerNames) {
+        mPlayerNames = playerNames;
+    }
+
+    @Override
+    public void showGameBegin() {
+        println();
+        println("It's " + getMatchupTextFromPlayerNames(mPlayerNames) + "!");
+        println("Let the game begin.");
+    }
+
     // --- Helpers
+
+    private static void println() {
+        println("");
+    }
 
     private static void println(String output) {
         System.out.println(output);
@@ -51,6 +72,26 @@ class ConsoleView implements View {
             e.printStackTrace();
             return null;
         }
+    }
+
+    /**
+     * @return A string representing the matchup, e.g. "PlayerOne vs. PlayerTwo".
+     */
+    private static String getMatchupTextFromPlayerNames(List<String> playerNames) {
+        if (playerNames == null || playerNames.size() == 0) {
+            return "";
+        }
+
+        String matchupText = "";
+        for (String playerName : playerNames) {
+            if (!matchupText.isEmpty()) {
+                matchupText += " vs. ";
+            }
+
+            matchupText += playerName;
+        }
+
+        return matchupText;
     }
 
 }
