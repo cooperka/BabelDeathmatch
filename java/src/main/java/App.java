@@ -1,10 +1,14 @@
 /**
- * Hello world!
+ * Root entry point for BabelDeathmatch.
  */
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        View view = new ConsoleView();
+        Game game = new Game();
+
+        Presenter presenter = new Presenter(view, game);
+        presenter.present();
     }
 
 }
