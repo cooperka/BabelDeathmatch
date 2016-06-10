@@ -21,7 +21,9 @@ class Presenter implements PresenterDelegate {
     }
 
     private void showSetup() {
-        mView.showSetupForNumPlayers(NUM_PLAYERS);
+        for (int i = 0; i < NUM_PLAYERS; i++) {
+            mView.showSetupForPlayerNumber(i + 1);
+        }
     }
 
     // --- PresenterDelegate

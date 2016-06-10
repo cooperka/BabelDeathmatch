@@ -19,13 +19,11 @@ class ConsoleView implements View {
     }
 
     @Override
-    public void showSetupForNumPlayers(int numPlayers) {
-        for (int i = 0; i < numPlayers; i++) {
-            String username = getStringGivenPrompt("Player " + (i + 1) + ", enter your username: ");
-            log("Name: " + username);
+    public void showSetupForPlayerNumber(int playerNumber) {
+        String username = getStringGivenPrompt("Player " + playerNumber + ", enter your username: ");
+        log("Name: " + username);
 
-            mDelegate.onAddPlayerWithUsername(username);
-        }
+        mDelegate.onAddPlayerWithUsername(username);
     }
 
     // --- Helpers
