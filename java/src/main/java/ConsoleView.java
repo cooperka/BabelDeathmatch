@@ -43,6 +43,12 @@ class ConsoleView implements View {
         println("Let the game begin.");
     }
 
+    @Override
+    public void showTurnForUsername(int playerNumber) {
+        String username = getNameForPlayerNumber(playerNumber);
+        println(username + ", your turn.");
+    }
+
     // --- Helpers
 
     private static void println() {
@@ -79,6 +85,7 @@ class ConsoleView implements View {
      */
     private static String getMatchupTextFromPlayerNames(List<String> playerNames) {
         if (playerNames == null || playerNames.size() == 0) {
+            log("Warning: Can't get matchup text: Array is empty");
             return "";
         }
 
@@ -92,6 +99,15 @@ class ConsoleView implements View {
         }
 
         return matchupText;
+    }
+
+    private String getNameForPlayerNumber(int playerNumber) {
+        if (mPlayerNames == null || mPlayerNames.size() < playerNumber) {
+            log("Warning: Can't get player name: Index " + (playerNumber - 1) + " OOB");
+            return "";
+        }
+
+        return mPlayerNames.get(playerNumber - 1);
     }
 
 }

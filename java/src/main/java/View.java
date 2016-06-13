@@ -11,5 +11,6 @@ interface View {
     void showWelcome();
     void showSetupForPlayerNumber(int playerNumber);
     void showGameBegin();
+    void showTurnForPlayerNumber(int playerNumber);
 
 }

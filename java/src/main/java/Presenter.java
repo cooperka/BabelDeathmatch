@@ -29,6 +29,10 @@ class Presenter implements PresenterDelegate {
         mView.showGameBegin();
     }
 
+    private void playGame() {
+        mView.showTurnForUsername();
+    }
+
     // --- PresenterDelegate
 
     @Override
